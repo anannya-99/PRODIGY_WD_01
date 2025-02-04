@@ -1,110 +1,18 @@
-// Navbar scroll effect
-// const navbar = document.querySelector('.navbar');
-// const mobileMenuButton = document.querySelector('.mobile-menu-button');
-// const menuIcon = document.querySelector('.menu-icon');
-// const closeIcon = document.querySelector('.close-icon');
-// const mobileMenu = document.querySelector('.mobile-menu');
+const header = document.querySelector("header");
 
-// Handle scroll events
-// window.addEventListener('scroll', () => {
-//   if (window.scrollY > 20) {
-//     navbar.classList.add('scrolled');
-//   } else {
-//     navbar.classList.remove('scrolled');
-//   }
-// });
+window.addEventListener("scroll", () => {
+    header.classList.toggle("sticky", window.scrollY > 0);
+    });
 
-// Mobile menu toggle
-// let isMobileMenuOpen = false;
+let menu = document.querySelector("#menu-icon");
+let navbar = document.querySelector(".navbar");
 
-// function toggleMobileMenu() {
-//   isMobileMenuOpen = !isMobileMenuOpen;
-  
-//   if (isMobileMenuOpen) {
-//     mobileMenu.classList.remove('hidden');
-//     menuIcon.classList.add('hidden');
-//     closeIcon.classList.remove('hidden');
-//   } else {
-//     mobileMenu.classList.add('hidden');
-//     menuIcon.classList.remove('hidden');
-//     closeIcon.classList.add('hidden');
-//   }
-// }
+menu.onclick = () => {
+    menu.classList.toggle("bx-x");
+    navbar.classList.toggle("open");
+};
 
-// mobileMenuButton.addEventListener('click', toggleMobileMenu);
-
-// Close mobile menu when clicking a link
-// const mobileMenuLinks = document.querySelectorAll('.mobile-nav-link');
-// mobileMenuLinks.forEach(link => {
-//   link.addEventListener('click', () => {
-//     if (isMobileMenuOpen) {
-//       toggleMobileMenu();
-//     }
-//   });
-// });
-
-
-// Navbar scroll effect
-const navbar = document.querySelector('.navbar');
-const mobileMenuButton = document.querySelector('.mobile-menu-button');
-const menuIcon = document.querySelector('.menu-icon');
-const closeIcon = document.querySelector('.close-icon');
-const mobileMenu = document.querySelector('.mobile-menu');
-
-// Handle scroll events
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
-
-// Mobile menu toggle
-let isMobileMenuOpen = false;
-
-function toggleMobileMenu() {
-  isMobileMenuOpen = !isMobileMenuOpen;
-  
-  if (isMobileMenuOpen) {
-    mobileMenu.classList.remove('hidden');
-    menuIcon.classList.add('hidden');
-    closeIcon.classList.remove('hidden');
-  } else {
-    mobileMenu.classList.add('hidden');
-    menuIcon.classList.remove('hidden');
-    closeIcon.classList.add('hidden');
-  }
-}
-
-mobileMenuButton.addEventListener('click', toggleMobileMenu);
-
-// Close mobile menu when clicking a link
-const mobileMenuLinks = document.querySelectorAll('.mobile-nav-link');
-mobileMenuLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    if (isMobileMenuOpen) {
-      toggleMobileMenu();
-    }
-  });
-});
-
-// Handle contact form submission
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  
-  // Get form data
-  const formData = new FormData(contactForm);
-  const data = Object.fromEntries(formData);
-  
-  // Here you would typically send the data to a server
-  console.log('Form submitted:', data);
-  
-  // Clear form
-  contactForm.reset();
-  
-  // Show success message (you can enhance this)
-  alert('Message sent successfully!');
-});
+window.onscroll = () => {
+    menu.classList.remove("bx-x");
+    navbar.classList.remove("open");
+};
